@@ -39,12 +39,13 @@ class MrPuppetShot {
    */
   async resizeViewport({
     width = this.page.viewport().width,
-    height = this.page.viewport().height
+    height = this.page.viewport().height,
+    deviceScaleFactor = this.page.viewport().deviceScaleFactor
   }) {
     if (!this.page) {
       this.page = await (await this.browser).newPage();
     }
-    return this.page.setViewport({ width, height });
+    return this.page.setViewport({ width, height, deviceScaleFactor });
   }
 
   /**
